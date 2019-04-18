@@ -28,7 +28,7 @@ def image_blend(value):
     
 
 cv2.namedWindow('image')
-cv2.createTrackbar('alpha', 'image', 0, 100, image_blend)
+trackbar_title = 'alpha * 100'
+cv2.createTrackbar(trackbar_title, 'image', 0, 100, image_blend)
 
-image_blend(0)
 cv2.waitKey(0)
