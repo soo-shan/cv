@@ -22,25 +22,25 @@ def crop_image1(image):
     new_im=ImageOps.expand(new_im,border=(15,15,15,15),fill='white')
     return new_im
 
-# mouse callback function
+# mouse callback functionq
 def crop(event,x, y,flags,param):
     img = cv2.imread(join(mypath,param))
     cv2.imshow('image',img)
-    print(join(mypath,i))
-    if event == cv2.EVENT_LBUTTONDOWN:
-        cropped = crop_image1(join(mypath,i))
-        cropped = np.array(cropped)
-        cropped = cropped[...,::-1]
-        cv2.imshow('image',cropped)
+    for i in onlyfiles:
+        print(i)
+        if event == cv2.EVENT_LBUTTONDBLCLK:
+            print(cv2.EVENT_LBUTTONDBLCLK)
+            cropped = crop_image1(join(mypath,i))
+            cropped = np.array(cropped)
+            cropped = cropped[...,::-1]
+            cv2.imshow('image',cropped)
 
 # img = np.zeros((512,512,3), np.uint8)
 mypath = 'random'
 onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath,f))]
 cv2.namedWindow('image')
-for i in onlyfiles:
-    cv2.setMouseCallback('image',crop,param=i)
-    k = cv2.waitKey(0) & 0xFF
-    if k == 27:
-        break    
 
-cv2.destroyAllWindows()
+cv2.setMouseCallback('image',crop,param=i)
+k = cv2.waitKey(0) & 0xFF
+if k == 27:
+    break    
