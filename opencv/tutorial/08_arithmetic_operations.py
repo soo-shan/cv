@@ -11,13 +11,17 @@ print('numpy addition of 250,10: ', x+y)          # 250+10 = 260 % 256 = 4
 
 # image blending
 img1 = cv2.imread('random/0003.jpeg')
+img2 = cv2.imread('random/0004.jpeg')
 
 cv2.imshow('image',img1)
 cv2.waitKey(0)
+cv2.imshow('image',img2)
+cv2.waitKey(0)
 
-img2 = cv2.flip(img1,0)
+# img2 = cv2.flip(img1,0)
 # print(min(img1.shape,img2.shape))
 
+# Create a slidebar for changing alpha value
 def image_blend(value):
     alpha =  value/100
     beta = 1 - alpha
